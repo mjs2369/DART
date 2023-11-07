@@ -1,4 +1,4 @@
-name: 'Build and run model'
+name: 'Build andrrun model'
 description: 'Build and run given model'
 
 # All possible input parameters that can be specified when using this composite action
@@ -50,15 +50,16 @@ runs:
       shell: bash
     # Steps to compile and build model
     - name: Building ${{ inputs.model }} model
-      if: ${{ inputs.use-mpif08 }}
-      run: |
-        cd ${{ inputs.models-directory }}/${{ inputs.model }}/work
-        ./quickbuild.sh mpif08
-      shell: bash
       if: ${{ !inputs.use-mpif08 }}
       run: |
         cd ${{ inputs.models-directory }}/${{ inputs.model }}/work
         ./quickbuild.sh
+      shell: bash
+    - name: Building ${{ inputs.model }} model (use-mpif08=true)
+      if: ${{ inputs.use-mpif08 }}
+      run: |
+        cd ${{ inputs.models-directory }}/${{ inputs.model }}/work
+        ./quickbuild.sh mpif08
       shell: bash
     # Steps to run the specified run-program with mpi options
     - name: Running ${{ inputs.model }} ${{ inputs.run-program }} program (use-mpi/mpif08=true)
