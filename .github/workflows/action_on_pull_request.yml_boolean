@@ -48,7 +48,7 @@ jobs:
           use-mpif08: false
 
   # Job 3
-  build-run-lorenz_84-mpif08:
+  build-run-lorenz_96-mpif08:
     runs-on: ubuntu-latest
     container:
       image: hkershaw/dart-dep:1.0
@@ -61,7 +61,7 @@ jobs:
       - name: Build and run lorenz_84 with mpif08
         uses: ./.github/actions/build_run_model
         with:
-          model: lorenz_84
+          model: lorenz_96
           run-program: ./filter
           use-mpi: false
           use-mpif08: true
