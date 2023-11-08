@@ -10,6 +10,7 @@ pt 3
 pt 4
 pt 5
 pt 6
+pt 7
 
 This section describes how you can contribute your work to DART. Because DART
 is an open-source project, your contributions are welcome. Many user-provided
