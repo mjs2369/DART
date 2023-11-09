@@ -5,7 +5,7 @@ Contributing to DART
 --------------------
 
 THIS ADDITION IS JUST TO TEST GITHUB ACTIONS!!!
-!!!!!!
+!!!!!!!
 
 This section describes how you can contribute your work to DART. Because DART
 is an open-source project, your contributions are welcome. Many user-provided
