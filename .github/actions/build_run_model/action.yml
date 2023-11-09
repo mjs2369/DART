@@ -49,6 +49,7 @@ runs:
       run: |
         echo ${{inputs.use-mpi }}
         echo [[ ${{ inputs.use-mpi }} == nompi ]]
+        echo ${{ inputs.use-mpi }} == nompi
         cd ${{ inputs.models-directory }}/${{ inputs.model }}/work
         ./quickbuild.sh
       shell: bash
@@ -59,13 +60,12 @@ runs:
         echo [[ ${{ inputs.use-mpi }} == mpi ]]
         cd ${{ inputs.models-directory }}/${{ inputs.model }}/work
         ./quickbuild.sh
+      shell: bash
     - name: Building ${{ inputs.model }} model (use-mpi=mpif08)
       if: ${{ inputs.use-mpi }} == mpif08
       run: |
         echo ${{inputs.use-mpi }}
         echo [[ ${{ inputs.use-mpi }} == mpif08 ]]
-        echo '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
-        echo ${{ eq(inputs.use-mpi, 'mpif08') }}
         cd ${{ inputs.models-directory }}/${{ inputs.model }}/work
         ./quickbuild.sh mpif08
       shell: bash
