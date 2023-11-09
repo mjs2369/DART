@@ -47,25 +47,18 @@ runs:
     - name: Building ${{ inputs.model }} model (use-mpi=nompi)
       if: ${{ inputs.use-mpi == 'nompi' }}
       run: |
-        echo ${{ inputs.use-mpi }}
-        echo ${{ inputs.use-mpi == 'nompi' }}
-        echo ${{ inputs.use-mpi == 'nompi' }}
         cd ${{ inputs.models-directory }}/${{ inputs.model }}/work
-        ./quickbuild.sh
+        ./quickbuild.sh nompi
       shell: bash
     - name: Building ${{ inputs.model }} model (use-mpi=mpi)
       if: ${{ inputs.use-mpi == 'mpi' }}
       run: |
-        echo ${{ inputs.use-mpi }}
-        echo ${{ inputs.use-mpi  == 'mpi' }}
         cd ${{ inputs.models-directory }}/${{ inputs.model }}/work
         ./quickbuild.sh
       shell: bash
     - name: Building ${{ inputs.model }} model (use-mpi=mpif08)
       if: ${{ inputs.use-mpi == 'mpif08' }}
       run: |
-        echo ${{ inputs.use-mpi }}
-        echo  ${{ inputs.use-mpi == 'mpif08' }}
         cd ${{ inputs.models-directory }}/${{ inputs.model }}/work
         ./quickbuild.sh mpif08
       shell: bash
