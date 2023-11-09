@@ -7,7 +7,7 @@ on:
 
 jobs:
   # Job 1
-  build-run-lorenz_96:
+  build-run-lorenz_96-mpi:
     # Runner instance OS
     runs-on: ubuntu-latest
     # Deploy container on top of runner instance
@@ -28,7 +28,7 @@ jobs:
           mpi-n-tasks: 2
   
   # Job 2
-  build-run-lorenz_63:
+  build-run-lorenz_63-nompi:
     runs-on: ubuntu-latest
     container:
       image: hkershaw/dart-dep:1.0
