@@ -1,0 +1,25 @@
+name: Action on Demand
+run-name: ${{ github.actor }} triggered workflow manually 
+
+on: workflow_dispatch
+
+jobs:
+  run_all_quickbuilds-TEST:
+    # Runner instance OS
+    runs-on: ubuntu-latest
+    # Deploy container on top of runner instance
+    container: 
+      image: hkershaw/dart-dep:1.0
+      options: "--cap-add=SYS_PTRACE"
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Set checked out repo as a safe git directory
+        run: git config --global --add safe.directory /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}
+      - name: Build and run lorenz_96 with mpi
+        uses: ./.github/actions/build_run_model 
+        with: 
+          model: lorenz_96
+          run-program: ./filter
+          use-mpi: mpi
+          mpi-n-tasks: 2
