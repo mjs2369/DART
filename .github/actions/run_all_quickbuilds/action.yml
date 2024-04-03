@@ -1,27 +1,8 @@
-name: 'Build and run model'
+name: 'Build everything - gfortran'
 description: 'Build and run given model'
 
 # All possible input parameters that can be specified when using this composite action
 inputs:
-  models-directory:
-    description: 'path to top-level directory containing the model to build and run'
-    type: string
-    required: false
-    default: 'models/'
-  model: 
-    description: 'name of existing DART model'
-    type: string
-    required: true
-    default: 'lorenz_96'
-  run-program:
-    description: 'name of program to run in model /work directory after compile'
-    required: true
-    default: './filter'
-  run-program-args:
-    type: string
-    description: 'arguments to use when running specified program'
-    required: false
-    default: ''
   use-mpi:
     description: 'specify whether to run program without MPI, with MPI, or with MPIF08'
     type: string
