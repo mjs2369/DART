@@ -183,71 +183,15 @@ If any of these steps fail or you don’t know how to do them, go to the DART
 project web page listed above for very detailed instructions that should get you
 over any bumps in the process.
 
-Quick-start for developers
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To create a fork of DART for your own development you will need
-a `GitHub <https://github.com/>`__ account. 
-
-1. fork the NCAR/DART repo on GitHub
-2. clone your (new) fork to your machine - this will set up a remote named
-   ‘origin’.
-
-.. code::
-
-   git clone https://github.com/USERNAME/DART.git
-
-where `USERNAME` is your GitHub username. 
-
-3. create a remote to point back to the NCAR/DART repo. Convention dictates
-   that this remote should be called ‘upstream’
-
-.. code::
-
-   git remote add upstream https://github.com/NCAR/DART.git
-
-Use ‘upstream’ to keep your fork up to date with NCAR/DART. GitHub has documentation
-on `working with forks <https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/working-with-forks>`__.
-
-4. Download one of the tar files (listed below) of ‘large’ files so you can test
-   your DART installation.
-5. If you want to contribute your work back to the DART community, create a feature
-   branch with your work, then issue a `pull request <https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork>`__
-   to propose changes to NCAR/DART.
-
-There are several large files that are needed to run some of the tests and
-examples but are not included in order to keep the repository as small as
-possible. If you are interested in running *bgrid_solo*, *cam-fv*, or testing
-the *NCEP/prep_bufr* observation converter, you will need these files. These
-files are available at:
-
-+-------------------+------+----------------------------------------------------------------------------------------------------------------------------------+
-| Release           | Size | Filename                                                                                                                         |
-+===================+======+==================================================================================================================================+
-| “Manhattan”       | 189M | `Manhattan_large_files.tar.gz <https://www.image.ucar.edu/pub/DART/Release_datasets/Manhattan_large_files.tar.gz>`__             |
-+-------------------+------+----------------------------------------------------------------------------------------------------------------------------------+
-| “wrf-chem.r13172” | 141M | `wrf-chem.r13172_large_files.tar.gz <https://www.image.ucar.edu/pub/DART/Release_datasets/wrf-chem.r13172_large_files.tar.gz>`__ |
-+-------------------+------+----------------------------------------------------------------------------------------------------------------------------------+
-| “Lanai”           | 158M | `Lanai_large_files.tar.gz <https://www.image.ucar.edu/pub/DART/Release_datasets/Lanai_large_files.tar.gz>`__                     |
-+-------------------+------+----------------------------------------------------------------------------------------------------------------------------------+
-| “Kodiak”          | 158M | `Kodiak_large_files.tar.gz <https://www.image.ucar.edu/pub/DART/Release_datasets/Kodiak_large_files.tar.gz>`__                   |
-+-------------------+------+----------------------------------------------------------------------------------------------------------------------------------+
-| “Jamaica”         | 32M  | `Jamaica_large_files.tar.gz <https://www.image.ucar.edu/pub/DART/Release_datasets/Jamaica_large_files.tar.gz>`__                 |
-+-------------------+------+----------------------------------------------------------------------------------------------------------------------------------+
-| “Hawaii”          | 32M  | `Hawaii_large_files.tar.gz <https://www.image.ucar.edu/pub/DART/Release_datasets/Hawaii_large_files.tar.gz>`__                   |
-+-------------------+------+----------------------------------------------------------------------------------------------------------------------------------+
-
-Download the appropriate tar file and untar it into your DART repository. Ignore
-any warnings about ``tar: Ignoring unknown extended header keyword``.
-
+.. _citeDART:
 
 Citing DART
 -----------
 
 Cite DART using the following text:
 
-   The Data Assimilation Research Testbed (Version X.Y.Z) [Software]. (2019).
-   Boulder, Colorado: UCAR/NCAR/CISL/DAReS. http://doi.org/10.5065/D6WQ0202
+   The Data Assimilation Research Testbed (Version X.Y.Z) [Software]. (2024).
+   Boulder, Colorado: UCAR/NSF NCAR/CISL/DAReS. http://doi.org/10.5065/D6WQ0202
 
 Update the DART version and year as appropriate.
 
@@ -290,6 +234,13 @@ References
    guide/verifying-installation
 
 .. toctree::
+   :hidden:
+   :caption: DART Python tools
+
+   guide/pytools
+
+
+.. toctree::
    :maxdepth: 2
    :caption: What is data assimilation?
 
@@ -318,7 +269,6 @@ References
    DART build system <guide/quickbuild.rst>
    guide/assimilation-complex-model
    guide/mpi_intro
-   guide/filters
    guide/inflation
    guide/required-model-mod-routines
    guide/suggestions-for-a-simple-model
@@ -362,10 +312,12 @@ References
    observations/obs_converters/Ameriflux/fluxnetfull_to_obs
    observations/obs_converters/Ameriflux/level4_to_obs
    observations/obs_converters/CHAMP/work/README
+   observations/obs_converters/BATS/readme
    observations/obs_converters/cice/cice_to_obs
    observations/obs_converters/CONAGUA/README
    observations/obs_converters/COSMOS/COSMOS_to_obs
    observations/obs_converters/COSMOS/COSMOS_development
+   observations/obs_converters/CrocoLake/readme
    observations/obs_converters/DWL/dwl_to_obs
    observations/obs_converters/GMI/README
    observations/obs_converters/GOES/README
@@ -374,8 +326,8 @@ References
    observations/obs_converters/GTSPP/GTSPP
    observations/obs_converters/MADIS/MADIS
    observations/obs_converters/MIDAS/MIDAS_to_obs
-   observations/obs_converters/MODIS/readme
    observations/obs_converters/MODIS/MOD15A2_to_obs
+   observations/obs_converters/MODIS/MOD29E1D_to_obs
    observations/obs_converters/MPD/README
    observations/obs_converters/NASA_Earthdata/README
    observations/obs_converters/NCEP/prep_bufr/prep_bufr
@@ -420,12 +372,12 @@ References
    :maxdepth: 2
    :caption: Theory
 
-   theory/readme
    theory/conditional-probability-bayes-theorem
    guide/DART_LAB/DART_LAB
+   theory/readme
+   guide/qceff-examples.rst
    CLM-DART Tutorial <models/clm/tutorial/README>
    WRF-DART Tutorial <models/wrf/tutorial/README>
-   guide/qceff-examples.rst
    
 .. toctree::
    :maxdepth: 2
@@ -467,6 +419,7 @@ References
    models/lorenz_96_tracer_advection/readme
    models/forced_lorenz_96/readme
    models/MITgcm_ocean/readme
+   models/MARBL_column/readme
    models/MOM6/readme
    models/mpas_atm/readme
    models/mpas_atm/mpas_dart_obs_preprocess
@@ -475,22 +428,22 @@ References
    models/NCOMMAS/readme
    models/noah/readme
    models/null_model/readme
+   models/pangu/readme
    models/PBL_1d/readme
    models/pe2lyr/readme
    models/POP/readme
    models/POP/dart_pop_mod
-   models/ROMS/readme
+   models/ROMS_rutgers/readme
+   models/ROMS_ucla/readme
    models/rose/readme
    models/seir/readme
    models/simple_advection/readme
    models/sqg/readme
-   models/template/new_model
    models/tiegcm/readme
    models/wrf_hydro/readme
    models/wrf/readme
    models/wrf/WRF_DART_utilities/replace_wrf_fields
    models/wrf/WRF_DART_utilities/wrf_dart_obs_preprocess
-   models/template/readme
    models/utilities/default_model_mod
 
 
@@ -499,7 +452,6 @@ References
    :caption: Contributing and Community
 
    guide/contributors-guide
-   guide/requesting-features-reporting-bugs
    guide/mailing-list
 
 .. toctree::
@@ -508,7 +460,6 @@ References
 
    guide/Manhattan_diffs_from_Lanai
    guide/forward_operator
-   guide/netcdf_inflation_files
    guide/state_structure
    guide/filter_async_modes
    guide/distributed_state
@@ -576,7 +527,6 @@ References
    :caption: Developer tests
    :hidden:
 
-   developer_tests/location/location_mod
    developer_tests/forward_operators/readme
    developer_tests/utilities/PrecisionCheck
 
@@ -621,3 +571,4 @@ References
    :hidden:
 
    guide/404
+   guide/references
