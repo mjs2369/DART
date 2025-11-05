@@ -1,0 +1,22 @@
+name: Lorenz_96 On Demand
+run-name: ${{ github.actor }} running basic tester workflow for CIRRUS
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-run-lorenz_96-nompi:
+    runs-on: ubuntu-latest
+    container:
+      image: hkershaw/dart-dep:2.0
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Set checked out repo as a safe git directory
+        run: git config --global --add safe.directory /__w/${{ github.event.repository.name }}/${{ github.event.repository.name }}
+      - name: Build and run lorenz_96 without mpi
+        uses: ./.github/actions/build_run_model
+        with:
+          model: lorenz_96
+          run-program: ./filter
+          use-mpi: nompi
