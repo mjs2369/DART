@@ -67,6 +67,7 @@ runs:
             exit 1
             ;;
         esac
+      shell: bash -elo pipefail {0}
     # Steps to compile and build model
     - name: Building ${{ inputs.model }} model (use-mpi=nompi)
       if: ${{ inputs.use-mpi == 'nompi' }}
